@@ -21,14 +21,14 @@ function verificarIntentos() {
 
 
     if (intentos == 4) {
-        ajusteElementoTexto('p', `perdite, tienes  ${intentos} intentos`);
+        ajusteElementoTexto('p', `Perdite, tienes  ${intentos} intentos`);
         document.querySelector('#valorDelInput').setAttribute('disabled', 'true');
         document.querySelector('#reiniciar').removeAttribute('disabled');
 
     } else {
         if (capturarValorDeLinput === numeroAleatorio) {
 
-            ajusteElementoTexto('p', `acertaste en el ${intentos} ${intentos === 1 ? 'intento ¡Felicidades!' : 'Intentos ¡Felicidades!'}`);
+            ajusteElementoTexto('p', `Acertaste en el ${intentos} ${intentos === 1 ? 'intento ¡Felicidades!' : 'Intentos ¡Felicidades!'}`);
             document.querySelector('#reiniciar').removeAttribute('disabled');
 
         } else {
@@ -39,7 +39,7 @@ function verificarIntentos() {
 
             } else {
 
-                ajusteElementoTexto('p', 'El numero secrto es menor, sigue intentando');
+                ajusteElementoTexto('p', 'El numero secreto es menor, sigue intentando');
             }
             linkpiarCampoUsuario()
             intentos++;
