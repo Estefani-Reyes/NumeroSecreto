@@ -1,10 +1,40 @@
+function guardarNombre() {
+    let nombre = document.querySelector("#nombreJ").value;
+    return nombre; // Retorna el valor de la variable 'nombre'
+}
 
 //Declaracion de variables
 let arrYnumeroSortado = [];
 let numeroMaximo = 10;
 let numeroAleatorio = generarNumeroAleatorio()
 let intentos = 0;
+let perdiste = 0;
+let intentosRondad = []
+let adivinaste = false;
+let nombreJugador = guardarNombre();
 
+let botonGuardar = document.querySelector("#guardarNombre");
+let inputNombre = document.querySelector("#nombreJ");
+
+let informacion = {
+   
+    numeros2: arrYnumeroSortado,
+    nombre: "" 
+};
+
+botonGuardar.addEventListener("click", function() {
+  
+    let nombre = inputNombre.value;
+    linkpiarCampoUsuario2
+ 
+    informacion.nombre = nombre;
+    
+    // Convertir el objeto a JSON
+    let informacionJSON = JSON.stringify(informacion);
+    
+    // Almacenar en localStorage
+    localStorage.setItem('informacion', informacionJSON);
+});
 
 //Funcion para cambiar los texto de la web
 function ajusteElementoTexto(etiqueta, texto) {
@@ -18,9 +48,7 @@ function verificarIntentos() {
 
     let capturarValorDeLinput = parseInt(document.querySelector('#valorDelInput').value);
 
-
-
-    if (intentos == 4) {
+    if (intentos == 5) {
         ajusteElementoTexto('p', `perdite, tienes  ${intentos} intentos`);
         document.querySelector('#valorDelInput').setAttribute('disabled', 'true');
         document.querySelector('#reiniciar').removeAttribute('disabled');
@@ -55,6 +83,12 @@ function linkpiarCampoUsuario() {
     linkpiarCampo.onclick = linkpiarCampo.value = "";
 }
 
+function linkpiarCampoUsuario2() {
+    let linkpiarCamp2= document.querySelector("#nombreJ");
+
+ linkpiarCamp2.onclick = linkpiarCamp2.value="";
+}
+
 function generarNumeroAleatorio() {
     let numeroGene = Math.floor(Math.random() * numeroMaximo) + 1;
 
@@ -86,13 +120,33 @@ function condicionesIniciales() {
 
 
 function reiniciarJuego() {
-    if (numeroAleatorio === verificarIntentos() || intentos == 4) {
+    if (numeroAleatorio === verificarIntentos() || intentos == 5) {
         document.querySelector('#valorDelInput').removeAttribute('disabled');
+        document.querySelector('#puntuacion').removeAttribute('disabled');
         document.querySelector('#reiniciar').setAttribute('disabled', 'true');
         condicionesIniciales()
     }
 
 }
 
+function mostrarObjetoJson() {
+  
+    let informacionJSON = localStorage.getItem('informacion');
+    
+   
+    let informacion = JSON.parse(informacionJSON);
+
+    let objetoJsonElement = document.getElementById('objetoJson');
+    
+   
+    objetoJsonElement.textContent = JSON.stringify(informacion, null, 2);
+}
+
+function resultadoFinal() {
+
+    mostrarObjetoJson();
+   
+}
+document.getElementById('puntuacion').addEventListener('click', resultadoFinal);
 
 condicionesIniciales()

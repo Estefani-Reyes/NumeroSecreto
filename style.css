@@ -28,7 +28,7 @@ body::before {
 
 .container {
     width: 1200px;
-    height: 600px;
+    height: 800px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,10 +58,10 @@ body::before {
     background: #1875E8;
     padding: 16px 24px;
     width: 100%;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 700;
     border: none;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .container__boton:disabled {
@@ -84,7 +84,7 @@ body::before {
     border: none;
     color: #1875E8;
     padding: 2rem;
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
 }
@@ -96,8 +96,14 @@ body::before {
 
 h1 {
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 72px;
+    font-size: 65px;
     padding-bottom: 3rem;
+}
+
+h2{
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 25px;
+    padding-bottom: 30px;
 }
 
 p,
@@ -109,3 +115,7 @@ button {
     font-size: 22px;
     font-weight: 400;
 }
+
+.jugador{
+    width: 300px!important;
+    }
