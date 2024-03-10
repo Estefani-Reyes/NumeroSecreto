@@ -26,7 +26,7 @@ body::before {
     opacity: 0.4;
 }
 
-.container {
+.container1 {
     width: 1200px;
     height: 800px;
     display: flex;
@@ -40,7 +40,12 @@ body::before {
     position: relative;
 }
 
-
+.container{
+    border: 1px solid #1875E8;
+    box-shadow: 4px 4px 20px 0px rgba(1, 8, 14, 0.15);
+    background-image: url("img/Ruido.png");
+    background-size: 100% 100%;
+}
 .container__contenido {
     display: flex;
     align-items: center;

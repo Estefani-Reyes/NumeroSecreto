@@ -1,6 +1,9 @@
 function guardarNombre() {
     let nombre = document.querySelector("#nombreJ").value;
+
+
     return nombre; // Retorna el valor de la variable 'nombre'
+    
 }
 
 //Declaracion de variables
@@ -15,27 +18,7 @@ let nombreJugador = guardarNombre();
 
 let botonGuardar = document.querySelector("#guardarNombre");
 let inputNombre = document.querySelector("#nombreJ");
-
-let informacion = {
-   
-    numeros2: arrYnumeroSortado,
-    nombre: "" 
-};
-
-botonGuardar.addEventListener("click", function() {
-  
-    let nombre = inputNombre.value;
-    linkpiarCampoUsuario2
- 
-    informacion.nombre = nombre;
-    
-    // Convertir el objeto a JSON
-    let informacionJSON = JSON.stringify(informacion);
-    
-    // Almacenar en localStorage
-    localStorage.setItem('informacion', informacionJSON);
-});
-
+;
 //Funcion para cambiar los texto de la web
 function ajusteElementoTexto(etiqueta, texto) {
     let elementoTexto = document.querySelector(etiqueta);
@@ -128,6 +111,20 @@ function reiniciarJuego() {
     }
 
 }
+botonGuardar.addEventListener("click", function () {
+
+    let nombre = inputNombre.value;
+    linkpiarCampoUsuario2
+
+    informacion.nombre = nombre;
+
+    // Convertir el objeto a JSON
+    let informacionJSON = JSON.stringify(informacion);
+
+    // Almacenar en localStorage
+    localStorage.setItem('informacion', informacionJSON);
+
+});
 
 function mostrarObjetoJson() {
   
@@ -139,7 +136,14 @@ function mostrarObjetoJson() {
     let objetoJsonElement = document.getElementById('objetoJson');
     
    
-    objetoJsonElement.textContent = JSON.stringify(informacion, null, 2);
+    objetoJsonElement.innerHTML = `<p> NOMBRE DEL JUGADOR  ${informacion.nombre} </p>`;
+    console.log(informacion.numerosSecretos)
+
+  
+     for(numeroSecreto in informacion.numerosSecretos){
+         objetoJsonElement.innerHTML += `<p> Numero secreto que ya salio ${numeroSecreto} </p>` ;
+     }
+
 }
 
 function resultadoFinal() {
@@ -150,3 +154,19 @@ function resultadoFinal() {
 document.getElementById('puntuacion').addEventListener('click', resultadoFinal);
 
 condicionesIniciales()
+
+let url = 'https://jsonplaceholder.typicode.com/users/';
+fetch(url)
+    .then(response => response.json())
+    .then(data => mostrarData(data))
+    .catch(error => console.log(error))
+
+const mostrarData = (data) => {
+    console.log(data)
+    let body = ""
+    for (var i = 0; i < data.length; i++) {
+        body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td></tr>`
+    }
+    document.getElementById('data').innerHTML = body
+   }
+console.log(url)
